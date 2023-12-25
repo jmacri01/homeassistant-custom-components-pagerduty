@@ -11,7 +11,7 @@ from homeassistant.const import CONF_NAME, CONF_SCAN_INTERVAL
 
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType, StateType
 
 __version__ = "1.0.0"
 
@@ -114,3 +114,8 @@ class PagerDutySensor(SensorEntity):
             self._incidents.append(incident_to_add)
 
             _LOGGER.debug("Added incident: %s", incident_to_add)
+
+    @property
+    def native_value(self) -> StateType:
+        """Return the state of the sensor."""
+        return len(self._incidents)

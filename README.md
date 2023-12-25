@@ -1,5 +1,7 @@
 # homeassistant-custom-components-pagerduty
 Adds a PagerDuty sensor to home assistant.
+Sensor state is the number of assigned incidents.
+Sensor contains incidents attribute which contains a list of assigned incidents.
 Queries PagerDuty API for all incidents assigned to a user.
 
 ## Support
