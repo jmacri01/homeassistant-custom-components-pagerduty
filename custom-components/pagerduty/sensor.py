@@ -118,4 +118,11 @@ class PagerDutySensor(SensorEntity):
     @property
     def native_value(self) -> StateType:
         """Return the state of the sensor."""
-        return len(self._incidents)
+        state = 'none'
+        for incident in self._incidents:
+            if "status" in incident:
+                if incident["status"] == "triggered":
+                    return "triggered"
+                if incident["status"] == "acknowledged":
+                    state = "acknowledged"
+        return state
