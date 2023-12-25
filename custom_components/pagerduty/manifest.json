@@ -7,5 +7,5 @@
   "issue_tracker": "https://github.com/jmacri01/homeassistant-custom-components-pagerduty/issues",
   "iot_class": "cloud_polling",
   "requirements": ["pdpyras==5.1.3"],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

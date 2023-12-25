@@ -13,9 +13,9 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType, StateType
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
-COMPONENT_REPO = "TBD"
+COMPONENT_REPO = "https://github.com/jmacri01/homeassistant-custom-components-pagerduty"
 
 REQUIREMENTS = ["pdpyras"]
 
@@ -78,7 +78,6 @@ class PagerDutySensor(SensorEntity):
         self._scan_interval = scan_interval
         self._incidents: list[dict[str, str]] = []
         self._attr_extra_state_attributes = {"incidents": self._incidents}
-        self._attr_attribution = "PagerDuty data"
         _LOGGER.debug("PagerDutySensor initialized - %s", self)
 
     def __repr__(self: PagerDutySensor) -> str:
