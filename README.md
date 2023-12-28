@@ -1,8 +1,12 @@
 # homeassistant-custom-components-pagerduty
-Adds a PagerDuty sensor to home assistant.
-Sensor state is the number of assigned incidents.
-Sensor contains incidents attribute which contains a list of assigned incidents.
-Queries PagerDuty API for all incidents assigned to a user.
+Adds a PagerDuty incidents sensor and PagerDuty on call schedules binary sensor to home assistant.
+## Incidents Sensor
+State is the highest level status across all incidents (triggered, acknowledged, none).
+Attributes contain a list of assigned incidents.
+
+## On Call Schedules Binary Sensor
+State is on when configured user is on call for any schedule.
+Attributes contain a list of assigned schedules.
 
 ## Support
 [![coffee](https://www.buymeacoffee.com/assets/img/custom_images/black_img.png)](https://www.buymeacoffee.com/jmacri)
@@ -21,12 +25,20 @@ Add the following to `<config directory>/configuration.yaml`
 
 ```yaml
 sensor:
-  platform: pagerduty
-  name: Pager Duty
+- platform: pagerduty
+  name: Pager Duty Incidents
+  type: incidents
   pagerduty_user_id: 'YOUR_PAGERDUTY_USER_ID'
   api_token: 'YOUR_PAGER_DUTY_API_TOKEN'
   scan_interval:
     seconds: 15
+- platform: pagerduty
+  name: Pager Duty On Call Schedules
+  type: oncallschedules
+  pagerduty_user_id: 'YOUR_PAGERDUTY_USER_ID'
+  api_token: 'YOUR_PAGER_DUTY_API_TOKEN'
+  scan_interval:
+    minutes: 5	
 ```
 
 **Configuration variables:**
@@ -35,9 +47,10 @@ key | description
 :--- | :---
 **platform (Required)** | The platform name
 **name (Required)** | Name your feed
+**type (Required)** | incidents or oncallschedules
 **pagerduty_user_id (Required)** | Your PagerDuty User ID (see section below)
 **api_token (Required)** | Your PagerDuty API Token (see section below)
-**scan_interval (Optional)** | Update interval. Defaults to 15 seconds
+**scan_interval (Optional)** | Update interval. Defaults to 15 seconds for incidents and 5 minutes for oncallschedules
 
 ***
 
