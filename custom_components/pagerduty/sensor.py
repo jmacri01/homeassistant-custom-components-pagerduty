@@ -180,7 +180,7 @@ class PagerDutyOnCallSensor(BinarySensorEntity):
         self._attr_icon = "mdi:alarm-light"
         self._scan_interval = scan_interval
         self._oncallschedules: list[dict[str, str]] = []
-        self._attr_extra_state_attributes = {"oncalls": self._oncallschedules}
+        self._attr_extra_state_attributes = {"oncall_schedules": self._oncallschedules}
         _LOGGER.debug("PagerDutyOnCallSensor initialized - %s", self)
 
     def __repr__(self: PagerDutyOnCallSensor) -> str:
@@ -205,7 +205,7 @@ class PagerDutyOnCallSensor(BinarySensorEntity):
                 and "summary" in oncallschedule["schedule"]
             ):
                 oncallschedule_to_add.update(
-                    {"oncall_schedule": oncallschedule["schedule"]["summary"]}
+                    {"summary": oncallschedule["schedule"]["summary"]}
                 )
             else:
                 continue
