@@ -10,6 +10,8 @@ Queries PagerDuty API for all incidents assigned to a user.
 ## Getting Started
 
 ### Install component
+Add as a custom HACS repository
+OR
 Copy `/custom_components/pagerduty/` to the following directory in Home Assistant:
 `<config directory>/custom_components/pagerduty/`
 
