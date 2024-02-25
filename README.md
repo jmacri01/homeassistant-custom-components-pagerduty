@@ -1,6 +1,4 @@
 # homeassistant-custom-components-pagerduty
-This is being abandoned in favor of https://github.com/jdrozdnovak/ha_pagerduty
-
 Adds a PagerDuty incidents sensor and PagerDuty on call schedules binary sensor to home assistant.
 ## Incidents Sensor
 State is the highest level status across all incidents (triggered, acknowledged, none).
